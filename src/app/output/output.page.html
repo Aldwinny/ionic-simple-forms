@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button value=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Welcome!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-icon
+          name="person-circle-outline"
+          slot="start"
+          color="secondary"
+        ></ion-icon>
+        <ion-label color="danger"
+          >Hi, {{datamap.params.lastname}}, {{datamap.params.firstname}}
+          <p>{{datamap.params.email}}</p></ion-label
+        >
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <p>Additional Information</p>
+          <p>Mobile: {{datamap.params.mobile}}</p>
+          <p>Birth date: {{actual_date}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title> Assignment 5.1: Forms </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-icon name="person-outline" color="danger" slot="start"></ion-icon>
+    <ion-label>Login Forms</ion-label>
+  </ion-item>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <ion-item lines="full">
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Enter your first name"
+        formControlName="firstname"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-label
+      color="danger"
+      *ngIf="form.get('firstname')?.touched && form.get('firstname')?.errors?.['required']"
+      >* First name is required</ion-label
+    >
+    <ion-label
+      color="danger"
+      *ngIf="form.get('firstname')?.touched && form.get('firstname')?.errors?.['minlength']"
+      >* Length must be greater than 2</ion-label
+    >
+
+    <ion-item lines="full">
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Enter your surname"
+        formControlName="lastname"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-label
+      color="danger"
+      *ngIf="form.get('lastname')?.touched && form.get('lastname')?.errors?.['required']"
+      >* Surname is required</ion-label
+    >
+    <ion-label
+      color="danger"
+      *ngIf="form.get('lastname')?.touched && form.get('lastname')?.errors?.['minlength']"
+      >* Length must be greater than 2</ion-label
+    >
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        type="email"
+        placeholder="email@domain.com"
+        formControlName="email"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-label
+      color="danger"
+      *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"
+      >* Email is required</ion-label
+    >
+    <ion-label
+      color="danger"
+      *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']"
+      >* Invalid Email</ion-label
+    >
+    <ion-item lines="full">
+      <ion-label position="stacked">Birth date</ion-label>
+      <ion-datetime presentation="date" formControlName="birth_date">
+      </ion-datetime>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Mobile</ion-label>
+      <ion-input
+        type="tel"
+        placeholder="888-888-8888"
+        formControlName="mobile"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-label
+      color="danger"
+      *ngIf="form.get('mobile')?.touched && form.get('mobile')?.errors?.['required']"
+      >* Mobile Number is required</ion-label
+    >
+    <ion-label
+      color="danger"
+      *ngIf="form.get('mobile')?.touched && form.get('mobile')?.errors?.['pattern']"
+      >* Mobile must be numeric</ion-label
+    >
+    <ion-row>
+      <ion-col>
+        <ion-button
+          type="submit"
+          color="danger"
+          expand="block"
+          [disabled]="!form.valid"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
